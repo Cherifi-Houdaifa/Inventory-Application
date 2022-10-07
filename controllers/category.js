@@ -1,7 +1,18 @@
 const Category = require('../models/category');
+const Item = require('../models/item');
 
+// /category/:id
 exports.getCategory = function (req, res, next) {
-    res.send(`Category: ${req.params.id}`);
+    Promise.all([
+        Item.find({ category: req.params.id }),
+        Category.find({ _id: req.params.id }),
+    ]).then((results) => {
+        res.render('getCategory', {
+            title: 'Category',
+            items: results[0],
+            category: results[1][0],
+        });
+    });
 };
 
 // /category/create

@@ -1,0 +1,16 @@
+extends layout 
+
+block content
+    h1=title
+    h2 categories
+    ul
+        each category in categorys
+            a(href=category.appUrl) #{category.name}
+            br
+    hr
+    h2 Items
+    ul
+        each item in items
+            li 
+                a(href=item.appUrl) #{item.name}
+                p= item.description 

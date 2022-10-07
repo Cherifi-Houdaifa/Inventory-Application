@@ -9,11 +9,11 @@ const CategorySchema = new Schema({
     },
     description: {
         type: Schema.Types.String,
-        maxLength: 15,
+        maxLength: 50,
     },
 });
 
-CategorySchema.virtual('url').get(function () {
+CategorySchema.virtual('appUrl').get(function () {
     return `/category/${this._id}`;
 });
 

@@ -21,10 +21,15 @@ const ItemSchema = new Schema({
         required: true,
         minLength: 1,
         maxLength: 30,
+    },
+    url: {
+        type: Schema.Types.String,
+        required: true,
+        minLength: 1,
     }
 });
 
-ItemSchema.virtual('url').get(function () {
+ItemSchema.virtual('appUrl').get(function () {
     return `/item/${this._id}`;
 });
 
