@@ -3,10 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const compression = require('compression');
 
 var app = express();
 
-const indexRouter = require("./routes/index");
+const indexRouter = require('./routes/index');
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
@@ -23,10 +24,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression()); // Compress all routes
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes Here
-app.use("/", indexRouter);  
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
