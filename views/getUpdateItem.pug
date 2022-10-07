@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    h1= title
+    form(action="", method="post")
+        Label Name
+            br
+            input(type="text", name="name" required minlength="1" maxlength="50" autocomplete="off" value=item.name) 
+        br
+        Label Description
+            br
+            input(type="text", name="description" maxlength="200" autocomplete="off" value=item.description) 
+        br
+        Label Category
+            br
+            select(name="category" required) 
+                each category in categorys
+                    if JSON.stringify(category._id)  === JSON.stringify(item.category)
+                        option(value=category._id selected) #{category.name}
+                    else 
+                        option(value=category._id) #{category.name}
+        br
+        Label Author
+            br
+            input(type="text", name="author" required minlength="1" maxlength="30" autocomplete="off" value=item.author)
+        br
+        Label Url
+            br
+            input(type="text", name="url" required minlength="1" autocomplete="off" value=item.url) 
+        br
+        input(type="submit", value="Update")

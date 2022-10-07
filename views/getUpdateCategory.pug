@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1= title
+    form(action="", method="post") 
+        label Name
+            br
+            input(type="text", name="name" required autocomplete="off" maxlength="15" value=category.name)
+        br
+        label Description
+            br
+            input(type="text", name="description" maxlength="50" autocomplete="off" value=category.description)
+        br
+        input(type="submit", value="Update")

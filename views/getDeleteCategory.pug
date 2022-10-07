@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1= title
+    hr
+    if items.length === 0
+        form(action="", method="post")
+            input(type="submit", value="Delete")
+    else
+        h2 Yo Have to delete these items first
+        ul
+            each item in items
+                a(href=item.appUrl) #{item.name}
+                br

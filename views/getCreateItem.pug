@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    h1= title
+    form(action="", method="post")
+        Label Name
+            br
+            input(type="text", name="name" required minlength="1" maxlength="50" autocomplete="off") 
+        br
+        Label Description
+            br
+            input(type="text", name="description" maxlength="200" autocomplete="off") 
+        br
+        Label Category
+            br
+            select(name="category" required) 
+                each category in categorys
+                    option(value=category._id) #{category.name} 
+        br
+        Label Author
+            br
+            input(type="text", name="author" required minlength="1" maxlength="30" autocomplete="off")
+        br
+        Label Url
+            br
+            input(type="text", name="url" required minlength="1" autocomplete="off") 
+        br
+        input(type="submit", value="Create")
